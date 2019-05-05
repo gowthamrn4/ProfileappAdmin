@@ -1,0 +1,356 @@
+<nav class="navbar navbar-primary header-page navbar-fixed-top" id="sectionsNav">
+  <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="row">
+          <div class="col-md-4 col-xs-6 text-left logo-img">
+              <a routerLink="/view-profile" class="profile-logo">
+                  <h3 class="myprofile-head">My Profile</h3>
+                  <div class="ripple-container"></div>
+              </a>
+          </div>
+          <div class="col-md-4 profile">
+              <!-- <h3 class="title">Edit Profile</h3> -->
+          </div>
+          <div class="col-md-4  col-xs-6 logout-img">
+
+              <ul class="nav navbar-nav navbar-right pull-right">
+
+                  <li class="dropdown" style="width:100px">
+                      <a class="profile-photo dropdown-toggle pull-right" data-toggle="dropdown">
+                          <div class="profile-photo-small">
+                              <img src="assets/img/profile.png" alt="Circle Image" class="img-circle img-responsive"><span style="color:#000000;display:inline-block;float:right">{{profilename}}</span>
+                          </div>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a (click)="logout()">
+                                  <i class="material-icons signout">account_circle</i>Signout
+                                  <div class="ripple-container"></div>
+                              </a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+
+          </div>
+      </div>
+  </div>
+</nav>
+<div class="page-header header-filter edit-header" data-parallax="true" style="background-image: url('./assets/img/city.jpg'); background-repeat:repeat;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card card-contact card-raised">
+                  <h4 class="card-title cardprofiletitle">Edit Profile</h4>
+                  <form role="form" id="contact-form" method="post" #profileForm="ngForm" (ngSubmit)="onsubmit(profileForm.value)" novalidate>
+                      <div class="card-content">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">First name</label>
+                                      <input type="text" name="firstname" class="form-control" #fname="ngModel" [ngModel]="user.firstname" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="text-danger">
+                                          <div *ngIf="fname.errors.required">
+                                              FirstName is Required
+                                          </div>
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Last name</label>
+                                      <input type="text" name="lastname" class="form-control" #lname="ngModel" [ngModel]="user.lastname" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="text-danger">
+                                          <div *ngIf="lname.errors.required">
+                                              LastName is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group label-floating">
+                                      <label class="control-label"></label>
+                                      <input type="text" name="profilename" class="form-control" [(ngModel)]="profilename" ngModel required>
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="text-danger">
+                                          <div *ngIf="uname.errors.required">
+                                              Username is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Enter Your Email </label>
+                                      <input type="email" name="primaryemail" class="form-control" #mail="ngModel" [ngModel]="user.primaryemail" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="text-danger">
+                                          <div *ngIf="mail.errors.required">
+                                              Email is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Contact Number</label>
+                                      <input type="tel" name="primarycontact" class="form-control" #contact="ngModel" [ngModel]="user.primarycontact" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="text-danger">
+                                          <div *ngIf="contact.errors.required">
+                                              Contact is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <!-- <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Profile Picture(URL)</label>
+                                      <input type="url" name="profilepic" class="form-control" #profilepicture="ngModel" [ngModel]="user.profilepic" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="profilepicture.invalid && (profilepicture.dirty || profilepicture.touched)" class="text-danger">
+                                          <div *ngIf="profilepicture.errors.required">
+                                              profilepicture is Required
+                                          </div>
+                                      </div>
+                                  </div> -->
+                                  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                      <div class="fileinput-new thumbnail img-circle img-raised">
+                                          <img [src]="user.profilepic ? user.profilepic : '/assets/img/placeholder.jpg'" width="50px">
+                                      </div>
+                                      <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                                      <span>
+                                          <span class="btn btn-raised btn-round btn-default btn-file">
+                                              <span class="fileinput-new">Select Profile Photo</span>
+                                              <span class="fileinput-exists">Change</span>
+                                              <input type="file" id="file" name="file" (change)="fileProfileUpload($event)" /></span>
+                                              <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                          <br />
+                                          
+                                          </span>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Description</label>
+                                      <input type="text" name="description" class="form-control" #description="ngModel" [ngModel]="user.description" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+                                          <div *ngIf="description.errors.required">
+                                              Description is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Designation</label>
+                                      <input type="text" name="designation" class="form-control" #designation="ngModel" [ngModel]="user.designation" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="designation.invalid && (designation.dirty || designation.touched)" class="text-danger">
+                                          <div *ngIf="designation.errors.required">
+                                              Designation is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Company Name</label>
+                                      <input type="text" name="companyname" class="form-control" #comname="ngModel" [ngModel]="user.companyname" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="comname.invalid && (comname.dirty || comname.touched)" class="text-danger">
+                                          <div *ngIf="comname.errors.required">
+                                              Company Name is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <!-- <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Company Logo(URL)</label>
+                                      <input type="url" name="companylogo" class="form-control" #comlogo="ngModel" [ngModel]="user.companylogo" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="comlogo.invalid && (comlogo.dirty || comlogo.touched)" class="text-danger">
+                                          <div *ngIf="comlogo.errors.required">
+                                              Company Logo is Required
+                                          </div>
+                                      </div>
+                                  </div> -->
+                                  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                      <div class="fileinput-new companyLogo">
+                                          <img [src]="user.companylogo ? user.companylogo : ''" width="50px" alt='' style="width: 100px">
+                                      </div>
+                                      <div class="fileinput-preview fileinput-exists"></div>
+                                      <span>
+                                          <span class="btn btn-raised btn-round btn-default btn-file">
+                                              <span class="fileinput-new">Select Company Logo</span>
+                                              <span class="fileinput-exists">Change Company Logo</span>
+                                              <input type="file" id="file" name="file" (change)="fileCompanyLogoUpload($event)" /></span>
+                                              <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                          <br />
+                                          
+                                          </span>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Company website(URL)</label>
+                                      <input type="url" name="companywebsite" class="form-control" #website="ngModel" [ngModel]="user.companywebsite" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="website.invalid && (website.dirty || website.touched)" class="text-danger">
+                                          <div *ngIf="website.errors.required">
+                                              Company website is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Address</label>
+                                      <input type="text" name="address" class="form-control" #addr="ngModel" [ngModel]="user.address" required>
+                                      <span class="material-input"></span>
+                                      <div *ngIf="addr.invalid && (addr.dirty || addr.touched)" class="text-danger">
+                                          <div *ngIf="addr.errors.required">
+                                              Company Address is Required
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Twitter link(URL)</label>
+                                      <input type="url" name="twitterlink" class="form-control" [ngModel]="user.twitterlink">
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="twitter.invalid && (twitter.dirty || twitter.touched)" class="text-danger">
+                                          <div *ngIf="twitter.errors.required">
+                                              Twitter Address is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Facebook link(URL)</label>
+                                      <input type="url" name="fblink" class="form-control" [ngModel]="user.fblink">
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="fb.invalid && (fb.dirty || fb.touched)" class="text-danger">
+                                          <div *ngIf="fb.errors.required">
+                                              Facebook is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Google Plus(URL)</label>
+                                      <input type="url" name="gpluslink" class="form-control" [ngModel]="user.gpluslink">
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="googleplus.invalid && (googleplus.dirty || googleplus.touched)" class="text-danger">
+                                          <div *ngIf="googleplus.errors.required">
+                                              Google Plus is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">LinkedIn(URL)</label>
+                                      <input type="url" name="linkedin" class="form-control" [ngModel]="user.linkedin">
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched)" class="text-danger">
+                                          <div *ngIf="linkedin.errors.required">
+                                              LinkedIn is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- <div class="info info-horizontal"></div> -->
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">Youtube Url</label>
+                                      <input type="text" name="youtubeurl" class="form-control" [ngModel]="user.youtubeurl">
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="youtube.invalid && (youtube.dirty || youtube.touched)" class="text-danger">
+                                          <div *ngIf="youtube.errors.required">
+                                              Youtube Url is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group label-floating is-empty">
+                                      <label class="control-label">SlideshareUrl</label>
+                                      <input type="text" name="slideshareurl" class="form-control" [ngModel]="user.slideshareurl">
+                                      <span class="material-input"></span>
+                                      <!-- <div *ngIf="slideshare.invalid && (slideshare.dirty || slideshare.touched)" class="text-danger">
+                                          <div *ngIf="slideshare.errors.required">
+                                              Slideshare is Required
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                          </div>
+
+
+
+                          <div class="row">
+                              <div class="col-md-6 col-sm-hidden">
+
+                              </div>
+                              <div class="col-md-6">
+                                  <button type="submit" class="btn btn-rose pull-right" [disabled]="!profileForm.form.valid">Save Profile</button>
+                                 <a routerLink="/landingpage"><button type="submit"  class="btn btn-rose pull-right">Cancel</button></a>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<app-dialog [(visible)]="showDialog">
+  <h5 class="dialoghead" align="center"> Profile saved successfully</h5>
+  <div align="center">
+      <button (click)="showDialog = !showDialog" class="btn btn-next btn-fill btn-warning btn-wd" style="background-color: #f44336">Close</button>
+  </div>
+</app-dialog>

@@ -1,0 +1,106 @@
+<nav class="navbar navbar-primary header-page navbar-fixed-top" id="sectionsNav">
+  <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="row">
+          <div class="col-md-4 col-xs-6 text-left logo-img">
+              <a routerLink="/view-profile" class="profile-logo">
+                  <h3 class="myprofile-head">My Profile</h3>
+                  <div class="ripple-container"></div>
+              </a>
+          </div>
+          <div class="col-md-4 profile">
+              <!-- <h3 class="title">Edit Profile</h3> -->
+          </div>
+          <div class="col-md-4  col-xs-6 logout-img">
+
+              <ul class="nav navbar-nav navbar-right pull-right">
+
+                  <li class="dropdown" style="width:100px">
+                      <a class="profile-photo dropdown-toggle pull-right" data-toggle="dropdown">
+                          <div class="profile-photo-small">
+                              <img src="assets/img/profile.png" alt="Circle Image" class="img-circle img-responsive"><span style="color:#000000;display:inline-block;float:right">{{profilename}}</span>
+                          </div>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a (click)="logout()">
+                                  <i class="material-icons signout">account_circle</i>Signout
+                                  <div class="ripple-container"></div>
+                              </a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+
+          </div>
+      </div>
+  </div>
+</nav>
+<div class="page-header header-filter edit-header" data-parallax="true" style="background-image: url('./assets/img/city.jpg'); background-repeat:repeat;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card card-contact card-raised">
+                  <div class="row">
+                      <div class="col-md-6">
+                            <h4 class="card-title cardprofiletitle"> Profile List</h4>
+                      </div>
+                      <div class="col-md-6 text-right">
+                            <a routerLink="/addinfo" class="card-title cardprofiletitle">
+                                <button class="btn">Add</button>
+                            </a> 
+                      </div>
+                  </div>
+               
+                      <div class="card-content">
+                   
+                       <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr >
+                                    <th class="text-center">#</th>
+                                    <th>Name</th>
+                                    <th>Last Name</th>
+                                    <th>Company</th>
+                                    <th>Email Id</th>
+                                    <th>Designation</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of labels;let i=index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td>{{list.firstname}}</td>
+                                    <td>{{list.lastname}}</td>
+                                    <td>{{list.companyname}}</td>
+                                    <td>{{list.primaryemail}}</td>
+                                    <td>{{list.designation}}</td>
+                                    <td class="td-actions  text-right">
+                                            <!-- <a routerLink="/addinfo"><button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
+                                                    <i class="material-icons">add</i>
+                                                </button></a>
+                                       <a routerLink="/viewlist/{{list.profilename}}"><button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
+                                            <i class="material-icons">edit</i>
+                                        </button></a> -->
+                                     
+                                                <span  rel="tooltip"  data-original-title="" title="">
+                                                        <i class="material-icons"></i>
+                                                </span>
+                                                <a routerLink="/viewlist/{{list.profilename}}"><button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
+		                                            <i class="material-icons">edit</i>
+		                                        <div class="ripple-container"></div></button></a>
+		                                       
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                      </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+

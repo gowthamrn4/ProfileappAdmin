@@ -1,0 +1,54 @@
+<div class="page-header header-filter login-component" style="background-image: url('../assets/img/city.jpg'); background-size: cover; background-position: top center;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+              <div class="card card-signup">
+                  <form class="form" method="" action="" name="form" #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+                      <div class="card-head text-center">
+                          <h3 class="title">Login</h3>
+                      </div>
+                      <!-- <p class="description text-center">Or Be Classical</p> -->
+                      <div class="card-content">
+
+                          <!-- <p *ngIf="errorMessage.length > 0" class="text-danger validation-message">
+                              {{errorMessage}}</p> -->
+                          <p *ngIf="error.message.length > 0" class="text-danger error-message">
+                              {{error.message}}</p>
+
+                          <div class="input-group">
+                              <span class="input-group-addon">
+                              <i class="material-icons">email</i>
+                              </span>
+                              <div class="form-group is-empty"><input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="email" #mail="ngModel" required><span class="material-input"></span></div>
+                              <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="text-danger">
+                                  <div *ngIf="mail.errors.required">
+                                      Email is Required
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="input-group">
+                              <span class="input-group-addon">
+                              <i class="material-icons">lock_outline</i>
+                              </span>
+                              <div class="form-group is-empty"><input type="password" name="password" placeholder="Password" minlength="6" class="form-control" [(ngModel)]="password" #noword="ngModel" required><span class="material-input"></span></div>
+                              <div *ngIf="noword.invalid && (noword.dirty || noword.touched)" class="text-danger">
+                                  <div *ngIf="noword.errors.required">
+                                      password is Required
+                                  </div>
+                                  <div *ngIf="noword.errors.minlength">
+                                      password must be atleast 6 letters.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="footer text-center">
+                          <input class="btn btn-primary btn-round btn-wd btn" type="submit" value="Log In" [disabled]="!loginForm.form.valid">
+                      </div>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

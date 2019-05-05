@@ -1,0 +1,83 @@
+.logo-img a.profile-logo {
+    color: #444 !important;
+    /* font-size: 15px; */
+}
+
+.profile-logo i {
+    font-size: 45px;
+    color: #a9a9a9;
+}
+
+a.mailtag,
+a.smstag {
+    padding: 0.5em;
+    color: #66bb6a;
+}
+
+a.mailtag:hover,
+a.smstag:hover,
+a.website:hover {
+    color: #6684bb;
+}
+
+a.smstag i {
+    background-color: #93c595;
+    color: rgb(235, 237, 238);
+    border-radius: 50%;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+a.website {
+    padding: 0.3em;
+    color: #55acee;
+}
+
+a.smsicon {
+    color: #66bb6a
+}
+
+a.smsicon:hover {
+    color: #6684bb;
+}
+
+span.twitername {
+    font-size: 0.7em;
+}
+
+.stats {
+    font-size: 11px;
+}
+
+.profile h3 {
+    margin: 0px;
+    color: #fff;
+}
+
+.edit-header .container {
+    padding-top: 106px;
+}
+
+.logo-img img {
+    height: 80px;
+}
+
+.logout-img {
+    padding-top: 4px;
+}
+
+.logout-img img {
+    height: 30px;
+}
+
+.header-page {
+    background-color: #fff !important;
+}
+
+.card-head h3 {
+    color: #928888 !important;
+}
+
+h4.cardprofiletitle {
+    padding-left: 30px;
+}

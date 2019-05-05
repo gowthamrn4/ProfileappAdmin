@@ -1,0 +1,21 @@
+export class Profile {
+    $key:string;
+    firstname:string;
+    lastname:string;
+    profilename:string;
+    profilepic:string;
+    description:string;
+    designation:string;
+    companyname:string;
+    companylogo:string;
+    companywebsite:string;
+    address:string;
+    twitterlink?:string;
+    fblink?:string;
+    gpluslink?:string;
+    linkedin?:string;
+    primaryemail:string;
+    youtubeurl?:string;
+    slideshareurl?:string;
+    primarycontact:number;
+}
